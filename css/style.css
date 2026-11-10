@@ -212,6 +212,9 @@ a {
 
 .category-card h3 {
     font: 700 26px 'Space Grotesk';
+    max-width: 62%;
+    position: relative;
+    z-index: 1;
 }
 
 .category-card img {
@@ -233,6 +236,7 @@ a {
     border-radius: 8px;
     padding: 12px;
     height: 100%;
+    min-width: 0;
     display: block;
     transition: .2s;
 }
@@ -289,6 +293,7 @@ a {
 .product-info h3 {
     font: 700 16px 'Space Grotesk';
     margin: 8px 0;
+    overflow-wrap: anywhere;
 }
 
 .product-info p {
@@ -299,13 +304,16 @@ a {
 
 .price {
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .old-price {
+    display: inline-block;
     color: #999;
     text-decoration: line-through;
     font-size: 12px;
     margin-left: 7px;
+    white-space: nowrap;
 }
 
 .stars {
@@ -449,6 +457,10 @@ a {
     vertical-align: middle;
 }
 
+.cart-table {
+    min-width: 600px;
+}
+
 .summary {
     background: white;
     border: 1px solid var(--line);
@@ -529,6 +541,11 @@ a {
 
 @media (max-width: 767px) {
 
+    .container,
+    .container-fluid {
+        padding-inline: 18px;
+    }
+
     .navbar {
         padding: 12px 0;
     }
@@ -545,8 +562,30 @@ a {
         letter-spacing: -3px;
     }
 
+    .hero-copy > .d-flex {
+        flex-wrap: wrap;
+        column-gap: 1.5rem !important;
+        row-gap: 1rem;
+    }
+
+    .ticker {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px 10px;
+        padding: 12px 10px;
+        white-space: normal;
+        font-size: 10px;
+        letter-spacing: .6px;
+    }
+
+    .ticker span {
+        margin: 0;
+    }
+
     .hero-image {
-        height: 340px;
+        height: clamp(240px, 75vw, 340px);
     }
 
     .section-pad {
@@ -558,6 +597,7 @@ a {
     }
 
     .row.g-5 {
+        --bs-gutter-x: 1.5rem;
         --bs-gutter-y: 1.5rem;
     }
 
@@ -565,16 +605,68 @@ a {
         padding: 30px 22px;
     }
 
+    .promo .row {
+        row-gap: 1.5rem;
+    }
+
     .product-image {
-        height: 175px;
+        height: clamp(180px, 52vw, 240px);
     }
 
     .detail-image {
-        height: 350px;
+        height: clamp(280px, 78vw, 350px);
     }
 
     .detail-title {
-        font-size: 33px;
+        font-size: clamp(30px, 8vw, 36px);
+    }
+
+    .page-head h1 {
+        font-size: clamp(36px, 10vw, 56px);
+        letter-spacing: -0.07em;
+        overflow-wrap: anywhere;
+    }
+
+    .section-title {
+        font-size: clamp(28px, 7.5vw, 40px);
+        letter-spacing: -1.5px;
+    }
+
+    .d-flex.justify-content-between.align-items-end.mb-4 {
+        align-items: flex-start !important;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .d-flex.justify-content-between.align-items-end.mb-4 > :first-child {
+        min-width: 0;
+    }
+
+    .btn-outline-pace {
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+
+    .filter-bar .form-select {
+        max-width: 100%;
+    }
+
+    .category-card {
+        min-height: 180px;
+        padding: 22px;
+    }
+
+    .promo h2 {
+        letter-spacing: -1.5px;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-box {
+        padding: 22px;
+    }
+
+    .table-responsive {
+        margin-inline: -0.25rem;
     }
 
     .footer {
@@ -606,4 +698,36 @@ a {
         padding: 10px 5px;
     }
 
+}
+
+@media (max-width: 575px) {
+    .product-grid > [class*="col-"] {
+        width: 100%;
+    }
+
+    .product-grid .product-image {
+        height: clamp(220px, 68vw, 300px);
+    }
+}
+
+@media (max-width: 380px) {
+    .announcement {
+        padding-inline: 12px;
+        line-height: 1.5;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 13vw, 52px);
+        letter-spacing: -0.07em;
+    }
+
+    .hero-sticker {
+        left: 14px;
+        bottom: 14px;
+        padding: 12px 14px;
+    }
+
+    .promo {
+        padding: 26px 18px;
+    }
 }
